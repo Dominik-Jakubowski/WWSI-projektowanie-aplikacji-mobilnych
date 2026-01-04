@@ -28,7 +28,7 @@ const UseReducerExample: React.FC = () => {
     (state: State, action: Action): State => {
       if (action.type === "FACTORIAL") {
         console.log("FACTORIAL action", action);
-        return { result: factorialize(state.result) };
+        return { result: factorialize(Math.trunc(state.result)) };
       }
 
       if (action.type === "SQRT") {
