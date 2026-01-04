@@ -1,3 +1,4 @@
+
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet, TextInput } from "react-native";
 
@@ -30,7 +31,7 @@ const UseMemoExample: React.FC = () => {
   const [color, setColor] = useState("#007AFF");
 
   // Memoize factorial calculation - only recalculates when number changes
-  const factorialResult = factorial(number);
+  const factorialResult = useMemo(()=>factorial(number), [number]);
 
 
   // Memoize color calculation - only recalculates when color state changes
