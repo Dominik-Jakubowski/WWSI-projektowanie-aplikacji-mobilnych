@@ -11,6 +11,9 @@ import {
 const UseDeferredValueExample: React.FC = () => {
   const [input, setInput] = useState<number>(100);
 
+  const deferredInput = useDeferredValue(input);
+  const [isPending, startTransition] = useTransition();
+
 
   const generateElements = (number: number) => {
     // This is an expensive operation that creates many elements
@@ -42,7 +45,8 @@ const UseDeferredValueExample: React.FC = () => {
           onChangeText={(text) => {
             const number = parseInt(text) || 0;
             if (number >= 0 && number <= 1000000) {
-              setInput(number);
+             //setInput(number);
+              startTransition(() => setInput(number));
             }
           }}
           keyboardType="numeric"
@@ -55,7 +59,7 @@ const UseDeferredValueExample: React.FC = () => {
           Input value: {input}
         </Text>
         <Text style={styles.statusText}>
-          Deferred value: {input}
+          Deferred value: {deferredInput}
         </Text>
 
 
@@ -66,7 +70,7 @@ const UseDeferredValueExample: React.FC = () => {
       </Text>
       
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={true}>
-        {generateElements(input)}
+        {generateElements(deferredInput)}
       </ScrollView>
 
       <Text style={styles.explanation}>
