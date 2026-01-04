@@ -23,7 +23,9 @@ const UseEffectExample: React.FC = () => {
   const [time, setTime] = useState(0);
 
   // Reset error information when moving to next question
-
+  useEffect(() => {
+    setCorrectAnswer(null);
+  }, [currentQuestion]);
 
   // Timer effect
   useEffect(() => {
