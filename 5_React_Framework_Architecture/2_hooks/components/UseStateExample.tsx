@@ -5,18 +5,19 @@ const UseStateExample: React.FC = () => {
   const [color, setColor] = useState("#FF69B4"); // pink
   const [counter, setCounter] = useState(0);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCounter((prev) => prev + 1);
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setCounter((prev) => prev + 1);
+  //   }, 1000);
+  //
+  //   return () => clearInterval(interval);
+  // }, []);
 
   const handleChangeColor = () => {
     const randomColor = Math.floor(Math.random() * 16777215).toString(16);
     const newColor = `#${randomColor}`;
     setColor(newColor);
+    setCounter((prev) => prev+1);
   };
 
   return (
